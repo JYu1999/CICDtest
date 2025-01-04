@@ -4,12 +4,18 @@ on:
   pull_request:
     types:
       - closed
+
+permissions:
+  contents: read
+  issues: write     # <-- You need at least this to create comments
+  pull-requests: write
+
 jobs:
   no-plans-to-merge:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Creatr a Comment on the PR
+      - name: Create a Comment on the PR
         uses: actions/github-script@v7
         with:
          script: |

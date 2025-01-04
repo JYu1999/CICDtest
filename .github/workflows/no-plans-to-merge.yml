@@ -7,12 +7,13 @@ on:
 
 permissions:
   contents: read
-  issues: write     # <-- You need at least this to create comments
+  issues: write
   pull-requests: write
 
 jobs:
   no-plans-to-merge:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
 
     steps:
       - name: Create a Comment on the PR
